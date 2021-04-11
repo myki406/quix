@@ -1,0 +1,439 @@
+@media only screen
+    and (min-device-width: 160px) 
+  and (max-device-width: 1360px)
+  and (orientation: portrait)
+{
+
+  .footer {
+    background-color: hsla(0, 0%, 0%, 0.5);
+    position: absolute;
+    bottom: 0vw;
+    width: 99%;
+    height: 22vw;
+  }
+  input {border: none; width: 13.5vw;}
+.sociallinks { margin-left: 27.5vw; width: 68.3vw; padding-top: 1vw;}
+  .facebook {background:transparent url("fb.png") no-repeat 0 0; background-size: 13.5vw;}
+  .instagram {background:transparent url("insta.png") no-repeat 0 0; background-size: 13.5vw;}
+  .twitter {background:transparent url("tw.png") no-repeat 0 0; background-size: 13.5vw;}
+  .merch input {border: none; width: 93.5vw;}
+  .merch { margin-left: 38vw; width: 23.5vw; padding-top: 2.5vw;}
+.merchlink {background:transparent url("merch.png") no-repeat 0 0; background-size: 93.5vw; margin-left: -35vw;
+  padding-top: 2vw;
+  }
+  .youtube {display: none;}
+  .spotify {display: none;}
+  .gmail {display: none;}
+  .bandcamp {display: none;}
+  .szamlalo {display: none;}
+  
+/****************************************/
+/* common styles used for v1 through v4 */
+/****************************************/
+
+body          { font-family: Arial, Helvetica, sans-serif; 
+background: url('mobile_bg_HD.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: black;
+      background-position: center; 
+      background-position: top;
+}
+#stats        { border: 2px solid black; }
+#controls     { width: 28em; float: left; padding: 1em; font-size: 0.7em; }
+#controls th  { text-align: right; vertical-align: middle; }
+#instructions { display: none; clear: left; float: left; width: 17em; padding: 1em; border: 1px solid black; box-shadow: 0 0 5px black; }
+#racer        { position: relative; z-index: 0; width: 640px; height: 480px; left: 50%; margin-left: -320px; top: 320px;}
+#canvas       { position: absolute; z-index: 0; width: 640px; height: 480px; z-index: 0; background-color: transparent;}
+#mute         { background-position:   0px 0px; width: 32px; height: 32px; background: url(images/mute.png); display: inline-block; cursor: pointer; position: absolute; top: 875px; left: 48.5%; }
+#mute.on      { background-position: -32px 0px; }
+
+/**************************************************/
+/* rudimentary heads up display (only used in v4) */
+/**************************************************/
+
+#hud                   { position: absolute; z-index: 1; width: 640px; padding: 5px 0; font-family: Verdana, Geneva, sans-serif; font-size: 0.8em; color: black; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+#hud .hud              { background-color: padding: 5px; margin: 0 5px; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
+#hud #speed            { float: right; }
+#hud #current_lap_time { float: left; width: 17em; }
+#hud #last_lap_time    { float: left; display: none;  }
+#hud #fast_lap_time    { float: left; width: 12em; text-align: left; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s;}
+/*#hud .value            { color: black; font-weight: bold; }*/
+#hud .fastest          { display: left; background-color: rgba(255,215,0,0); }
+
+@font-face {
+    font-family: 'pixel';
+    src: url(pix.ttf);
+}
+
+/**
+ Hide elements
+**/
+.hidden {
+ display: none;
+}
+
+#hud > span, #hud .value{
+ font-family: pixel; 
+ font-size: 2em;
+ color: white;
+}
+  
+  .loadframe {
+    /*display: none;*/
+    position: relative;
+      left: 50%;
+      margin-left: -32.8vw;
+      top: -17vw;
+      width: 65.6vw;
+      height: 49.5vw;
+    
+      
+  }
+  
+  .arrow-left{
+    margin-left:  15vw;
+    margin-top: -2.6vw;
+  width: 0; 
+  height: 0; 
+  border-top: 9vw solid transparent;
+  border-bottom: 6vw solid transparent; 
+  border-right: 14vw solid transparent;
+  }
+  .arrow-left:hover {
+    background: url('left.png');
+    background-repeat: no-repeat;
+    background-size: 14vw;
+    margin-left:  16vw;
+    margin-top: -11.6vw;
+    height: 9vw;
+    
+  }
+    .arrow-right{
+    margin-left:  40vw;
+    margin-top: -15vw;
+    width: 0; 
+    height: 0; 
+    border-top: 9vw solid transparent;
+    border-bottom: 6vw solid transparent;
+    border-left: 14vw solid transparent;
+  }
+  .arrow-right:hover {
+    background: url('right.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-position: center;
+    background-position: -145px;
+    background-size: 14vw;
+    height: 5vw;
+    margin-left:  40vw;
+    margin-top: -18.5vw;
+  }
+  
+  .arrow-up {
+  margin-left: 61vw;
+  margin-top: -14.5vw;
+  width: 0; 
+  height: 0; 
+  border-left: 8vw solid transparent;
+  border-right: 7vw solid transparent;
+  border-bottom: 14vw solid transparent;
+}
+  .arrow-up:hover {
+  background-image: url('start.png');
+  background-size: 16vw;
+  background-position: top center;
+    background-repeat: no-repeat;
+  margin-left: 61vw;
+  margin-top: -14.5vw;
+  width: 0; 
+  height: 0; 
+}
+  .quixotic {
+    position: absolute;
+    width: 70vw;
+    height: 18vw;
+    left: 14vw;
+    top: 6vw;
+    
+  }
+  .quixotic:hover {
+    position: absolute;
+    width: 70vw;
+    height: 18vw;
+    left: 14vw;
+    top: 6vw;
+    
+  }
+  .gamecave {
+    position: absolute;
+    width: 23vw;
+    height: 10vw;
+    
+    top: 148vw;
+    margin-left: 8vw;
+  }
+  .madeby {position: absolute; font-size: 1.8rem; color: grey; left: 20vw;}
+  
+}
+/*
+#hud                   { position: absolute; z-index: 1; width: 640px; padding: 5px 0; font-family: Verdana, Geneva, sans-serif; font-size: 0.8em; background-color: rgba(255,0,0,0.4); color: black; border-bottom: 2px solid black; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+#hud .hud              { background-color: rgba(255,255,255,0.6); padding: 5px; border: 1px solid black; margin: 0 5px; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
+*/
+
+
+
+@media only screen
+    and (min-device-width: 1000px)
+{
+/****************************************/
+/* common styles used for v1 through v4 */
+/****************************************/
+
+body          { font-family: Arial, Helvetica, sans-serif; 
+background: url('desktop_bg_HD.jpg');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-color: black;
+      background-position: center; 
+      background-position: top;
+}
+#stats        { border: 2px solid black; }
+#controls     { width: 28em; float: left; padding: 1em; font-size: 0.7em; }
+#controls th  { text-align: right; vertical-align: middle; }
+#instructions { display: none; clear: left; float: left; width: 17em; padding: 1em; border: 1px solid black; box-shadow: 0 0 5px black; }
+#racer        { position: relative; z-index: 0; width: 28vw; height: 21.2vw; left: 50%; margin-left: -14vw; top: 16.4vw;}
+#canvas       { position: absolute; z-index: 0; width: 28vw; height: 21.2vw; z-index: 0; background-color: transparent;}
+#mute         { background-position:   0px 0px; width: 32px; height: 32px; background: url(images/mute.png); display: inline-block; cursor: pointer; position: absolute; top: 13.5vw; left: 48.2vw; }
+#mute.on      { background-position: -32px 0px; }
+
+/**************************************************/
+/* rudimentary heads up display (only used in v4) */
+/**************************************************/
+
+#hud                   { position: absolute; z-index: 1; width: 28vw; padding: 5px 0; font-family: Verdana, Geneva, sans-serif; font-size: 0.8vw; color: black; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+#hud .hud              { background-color: padding: 5px; margin: 0 5px; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
+#hud #speed            { float: right; }
+#hud #current_lap_time { float: left;  }
+#hud #last_lap_time    { float: left; display: none;  }
+#hud #fast_lap_time    { float: left; font-size: 1vw; width: 12em; text-align: left; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s;}
+/*#hud .value            { color: black; font-weight: bold; }*/
+#hud .fastest          { display: left; background-color: rgba(255,215,0,0); }
+
+@font-face {
+    font-family: 'pixel';
+    src: url(pix.ttf);
+}
+
+/**
+ Hide elements
+**/
+.hidden {
+ display: none;
+}
+
+#hud > span, #hud .value{
+ font-family: pixel; 
+ font-size: 2em;
+ color: white;
+}
+
+/*
+#hud                   { position: absolute; z-index: 1; width: 640px; padding: 5px 0; font-family: Verdana, Geneva, sans-serif; font-size: 0.8em; background-color: rgba(255,0,0,0.4); color: black; border-bottom: 2px solid black; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+#hud .hud              { background-color: rgba(255,255,255,0.6); padding: 5px; border: 1px solid black; margin: 0 5px; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
+*/
+
+.loadframe {
+      position: absolute;
+      width: 28vw; height: 21.7vw; left: 50%; margin-left: -14vw; top: 16.4vw;
+      
+      }
+
+    .quixotic {
+      position: absolute;
+      left: 56vw;
+      margin-left: -23.4vw;
+      top: 4.3vw;
+      width: 33.2vw;
+      height: 7.3vw;
+      
+    }
+  .quixotic:hover {
+      position: absolute;
+      left: 56vw;
+      margin-left: -23.4vw;
+      top: 4.28vw;
+      width: 33.2vw;
+      height: 7.4vw;
+      background: url("quixotic.gif") no-repeat 0 0;
+      background-size: 100%;
+      background-color: transparent;
+      
+    }
+  .gamecave {
+    position: absolute;
+  
+    width: 10vw;
+    height: 10vw;
+    top: 10vw;
+    left: 9.6vw;
+    transform: rotate(12deg);
+  }
+  .gamecave:hover {
+    position: absolute;
+    width: 13vw;
+    height: 10vw;
+    top: 9vw;
+    left: 8vw;
+    transform: rotate(0deg);
+    background: url("gamecave.png") no-repeat 0 0;
+    background-size: 100%;
+  }
+  .hidden {
+    position: absolute;
+    width: 5vw;
+    height: 4vw;
+    top: 49vw;
+    left: 21vw;
+  
+  }
+  .hidden:hover {
+    position: absolute;
+    width: 5vw;
+    height: 4vw;
+    top: 49vw;
+    left: 21vw;
+    background: url("hidden.png");
+    background-size: 100%;
+    transform: scale(1.2);
+    
+  }
+  
+  .balposzter {
+    position: absolute;
+    width: 17vw;
+    height: 29vw;
+    top: 19.2vw;
+    left: 4vw;
+    transform: rotate(-6.5deg);
+    
+  }
+  .balposzter:hover {
+    position: absolute;
+    width: 22vw;
+    height: 33vw;
+    top: 18.1vw;
+    left: 0.5vw;
+    transform: rotate(0deg);
+    background: url("balposzter.png") no-repeat 0 0;
+    background-size: 100%;
+    opacity: 1;
+    
+  }
+  .hviolence {
+    position: absolute;
+    width: 19.9vw;
+    height: 33vw;
+    top: 2vw;
+    left: 67.5vw;
+    transform: rotate(6deg);
+   
+  }
+  .hviolence:hover {
+    position: absolute;
+    width: 22vw;
+    height: 35vw;
+    top: 1.3vw;
+    left: 67.4vw;
+    transform: rotate(0deg);
+    transform: scale(1.01);
+    background: url("highway.png") no-repeat 0 0;
+    background-size: 100%;
+    opacity: 1;
+    
+  }
+  .sonnyfive {
+    position: absolute;
+    width: 8vw;
+    height: 3vw;
+    left: 68vw;
+    top: 36vw;
+    transform: rotate(-16deg);
+    
+  }
+  .sonnyfive:hover {
+    position: absolute;
+    width: 8.4vw;
+    height: 4.8vw;
+    left: 68.5vw;
+    top: 35.1vw;
+    transform: rotate(0deg);
+    transform: scale(1.1);
+    background: url("sonnyfive.png");
+    background-size: 100%;
+    opacity: 1;
+    
+  }
+  .mihaszna {
+    position: absolute;
+    width: 18vw;
+    height: 5vw;
+    top: 36.3vw;
+    left: 74vw;
+    transform: rotate(-16deg);
+    
+  }
+  .mihaszna:hover {
+    position: absolute;
+    width: 22vw;
+    height: 8vw;
+    top: 34.6vw;
+    left: 72.7vw;
+    transform: rotate(0deg);
+    transform: scale(1.1);
+    background: url("mihaszna.png");
+    background-size: 100%;
+    opacity: 1;
+    
+  }
+  
+  html {
+  min-height: 100%;
+  position: relative;
+}
+
+
+input {border: none; width: 3.5vw;}
+.sociallinks { margin-left: 36.5vw; width: 28.3vw; padding-top: 1vw;}
+.merch { margin-left: 38vw; width: 23.5vw; padding-top: 0.5vw;}
+.footer {
+  background-color: hsla(0, 0%, 0%, 0.5); 
+  color: aliceblue;
+  position: absolute;
+  left: 0%;
+  width: 99vw;
+  bottom: -8vh;
+  height: 7vw;
+}
+
+.youtube {background:transparent url("yt.png") no-repeat 0 0; background-size: 3.5vw;}
+.youtube:hover {background:transparent url("yt-hover.png") no-repeat 0 0; background-size: 3.5vw;}
+.facebook {background:transparent url("fb.png") no-repeat 0 0; background-size: 3.5vw;}
+.facebook:hover {background:transparent url("fb-hover.png") no-repeat 0 0; background-size: 3.5vw;}
+.instagram {background:transparent url("insta.png") no-repeat 0 0; background-size: 3.5vw;}
+.instagram:hover {background:transparent url("insta-hover.png") no-repeat 0 0; background-size: 3.5vw;}
+.twitter {background:transparent url("tw.png") no-repeat 0 0; background-size: 3.5vw;}
+.twitter:hover {background:transparent url("tw-hover.png") no-repeat 0 0; background-size: 3.5vw;}
+.spotify {background:transparent url("spoti.png") no-repeat 0 0; background-size: 3.5vw;}
+.spotify:hover {background:transparent url("spoti-hover.png") no-repeat 0 0; background-size: 3.5vw;}
+.gmail {background:transparent url("gmail.png") no-repeat 0 0; background-size: 3.5vw;}
+.gmail:hover {background:transparent url("gmail-hover.png") no-repeat 0 0; background-size: 3.5vw;}
+.bandcamp {background:transparent url("bandcamp.png") no-repeat 0 0; background-size: 3.5vw;}
+.bandcamp:hover {background:transparent url("bandcamp-hover.png") no-repeat 0 0; background-size: 3.5vw;}
+
+.merch input {border: none; width: 23.5vw;}
+.merchlink {background:transparent url("merch.png") no-repeat 0 0; background-size: 23.5vw;}
+.merchlink:hover {background:transparent url("merch-hover.png") no-repeat 0 0; background-size: 23.5vw;}
+  .madeby {position: absolute; font-size: 1.2rem; color: grey; left: 39.5vw; padding-top: 0.3vw;}
+  .szamlalo {display: none;}
+}
